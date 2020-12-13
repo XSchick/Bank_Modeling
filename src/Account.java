@@ -24,7 +24,7 @@ public class Account {
      * the payout will not take place and the method returns false
      *
      * @param amount payment amount
-     * @return true if payment take place, false if the balance would be nagtiv
+     * @return true if payment take place, false if the balance would be negative
      */
     public boolean withdraw(int amount) {
         if ((this.balance - amount) < 0) {
@@ -33,6 +33,15 @@ public class Account {
         this.balance -= amount;
         return true;
     }
-    //public void deposit(int amount) {}
+
+    /**
+     * This method pays money into the account
+     * and increases the balance by the deposit amount
+     *
+     * @param amount deposit amount
+     */
+    public void deposit(int amount) {
+        this.balance += amount;
+    }
     //public boolean transfer(Account  account ,int amount)
 }
