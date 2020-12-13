@@ -18,7 +18,21 @@ public class Account {
         this.balance = 0;
     }
 
-    //public boolean withdraw(int amount) {}
+    /**
+     * The account balance is reduced by the amount transferred.
+     * If the account balance would become negative due to the payout,
+     * the payout will not take place and the method returns false
+     *
+     * @param amount payment amount
+     * @return true if payment take place, false if the balance would be nagtiv
+     */
+    public boolean withdraw(int amount) {
+        if ((this.balance - amount) < 0) {
+            return false;
+        }
+        this.balance -= amount;
+        return true;
+    }
     //public void deposit(int amount) {}
     //public boolean transfer(Account  account ,int amount)
 }
