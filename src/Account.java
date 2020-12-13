@@ -5,9 +5,16 @@ public class Account {
     int bankCode;
     int balance;
 
-    public Account(int theBankCode, int theBankNumber){
+    /**
+     * Initializing bank code and the account number
+     * Initialize the account balance with 0
+     *
+     * @param theBankCode      bank code
+     * @param theAccountNumber account number
+     */
+    public Account(int theBankCode, int theAccountNumber) {
         this.bankCode = theBankCode;
-        this.accountNumber = theBankNumber;
+        this.accountNumber = theAccountNumber;
         this.balance = 0;
     }
 
