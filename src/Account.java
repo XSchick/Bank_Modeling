@@ -1,5 +1,6 @@
 import edu.kit.informatik.*;
 
+
 public class Account {
     int accountNumber;
     int bankCode;
@@ -43,5 +44,19 @@ public class Account {
     public void deposit(int amount) {
         this.balance += amount;
     }
-    //public boolean transfer(Account  account ,int amount)
+
+    /**
+     * Transfers an amount from one bank account to another
+     *
+     * @param account Target account
+     * @param amount  amount of transfer
+     * @return false if the balance of the source account wouldn't´t go negative
+     */
+    public boolean transfer(Account account, int amount) {
+        if (withdraw(amount)) {
+            account.deposit(amount);
+            return true;
+        }
+        return false;
+    }
 }
