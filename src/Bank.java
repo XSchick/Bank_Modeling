@@ -16,7 +16,7 @@ public class Bank {
     public int createAccount() {
         for (int i = 0; i < this.accounts.length; i++) {
             if (this.accounts[i] == null) {
-                this.accounts[i] = new Account(bankCode, i);
+                this.accounts[i] = new Account(this.bankCode, i);
                 return i;
             }
             if (i == this.accounts.length - 1) {
@@ -49,7 +49,9 @@ public class Bank {
     }
 //public boolean containsAccount(int accountNumber) {}
 //public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
-//public int length() {}
+    public int length() {
+        return this.accounts.length;
+    }
 //public int size() {}
 //public Account  getAccount(int index) {}
 
