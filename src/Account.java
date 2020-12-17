@@ -59,4 +59,13 @@ public class Account {
         }
         return false;
     }
+
+    /**
+     * Returns the account number
+     *
+     * @return account number
+     */
+    public int getAccountNumber() {
+        return accountNumber;
+    }
 }

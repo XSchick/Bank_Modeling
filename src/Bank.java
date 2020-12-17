@@ -38,7 +38,15 @@ public class Bank {
     }
 
 
-//public boolean removeAccount(int accountNumber) {}
+    public boolean removeAccount(int accountNumber) {
+        for (int i = 0; i < accounts.length; i++){
+            if (accountNumber == accounts[i].getAccountNumber()) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 //public boolean containsAccount(int accountNumber) {}
 //public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
 //public int length() {}
