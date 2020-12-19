@@ -1,8 +1,9 @@
 import edu.kit.informatik.*;
 
 public class Bank {
-    int bankCode; //maybe static?????
+    private int bankCode; //maybe static?????
     Account[] accounts = new Account[8];
+    private int nextAccountNumber = 0;
 
     /**
      * Constructor of class Bank
@@ -22,8 +23,8 @@ public class Bank {
     public int createAccount() {
         for (int i = 0; i < this.accounts.length; i++) {
             if (this.accounts[i] == null) {
-                this.accounts[i] = new Account(this.bankCode, i);
-                return i;
+                this.accounts[i] = new Account(this.bankCode, nextAccountNumber);
+                return nextAccountNumber++;
             }
             if (i == this.accounts.length - 1) {
                 resize(this.accounts);
@@ -90,13 +91,43 @@ public class Bank {
         this.accounts = tempArray;
     }
 
-    //public boolean containsAccount(int accountNumber) {}
-//public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
+    /**
+     * @param accountNumber account number
+     * @return true if account exists, false if not
+     */
+    public boolean containsAccount(int accountNumber) {
+        for (int i = 0; i < this.accounts.length; i++) {
+            if (accountNumber == accounts[i].getAccountNumber()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
+
     public int length() {
         return this.accounts.length;
     }
-//public int size() {}
-//public Account  getAccount(int index) {}
+
+    /**
+     * Adds up the number of accounts
+     *
+     * @return number of existing accounts
+     */
+    public int size() {
+        int numberOfAccounts = 0;
+        for (Account account : this.accounts) {
+            if (account != null) {
+                numberOfAccounts++;
+            }
+        }
+        return numberOfAccounts;
+    }
+
+public Account  getAccount(int index) {
+        return this.accounts[index];
+}
 
 
 }

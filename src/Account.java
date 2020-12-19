@@ -2,9 +2,9 @@ import edu.kit.informatik.*;
 
 
 public class Account {
-    int accountNumber;
-    int bankCode;
-    int balance;
+    private int accountNumber;
+    private int bankCode;
+    private int balance;
 
     /**
      * Initializing bank code and the account number
