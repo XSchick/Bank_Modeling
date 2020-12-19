@@ -13,6 +13,12 @@ public class Bank {
         this.bankCode = theBankCode;
     }
 
+    /**
+     * This method is looking for a free space in the array to create a new account.
+     * If there is no further space, the array will be doubled
+     *
+     * @return the account number of the new created account
+     */
     public int createAccount() {
         for (int i = 0; i < this.accounts.length; i++) {
             if (this.accounts[i] == null) {
@@ -39,15 +45,28 @@ public class Bank {
 
 
     public boolean removeAccount(int accountNumber) {
-        for (int i = 0; i < accounts.length; i++){
+        for (int i = 0; i < accounts.length; i++) {
             if (accountNumber == accounts[i].getAccountNumber()) {
+                accounts[i] = null;
                 return true;
             }
-
         }
         return false;
     }
-//public boolean containsAccount(int accountNumber) {}
+
+    private void cutArray() {
+        Account[] tempArray = new Account[this.accounts.length / 2];
+        int k = 0;
+        for (Account account : this.accounts) {
+            if (account != null) {
+                tempArray[k] = account;
+                k++;
+        this.accounts = tempArray;
+            }
+        }
+    }
+
+    //public boolean containsAccount(int accountNumber) {}
 //public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
     public int length() {
         return this.accounts.length;
