@@ -43,17 +43,41 @@ public class Bank {
         this.accounts = tempArray;
     }
 
-
+    /**
+     * @param accountNumber account number of the account to be deleted
+     * @return true if the the account with the given account number exists, false if not
+     */
     public boolean removeAccount(int accountNumber) {
         for (int i = 0; i < accounts.length; i++) {
             if (accountNumber == accounts[i].getAccountNumber()) {
                 accounts[i] = null;
+                if ((fillRate() < 0.25) && (this.accounts.length != 8)) {
+                    cutArray();
+                }
                 return true;
             }
         }
         return false;
     }
 
+    /**
+     * Calculates how much of the array is used for accounts
+     *
+     * @return fill rate
+     */
+    private double fillRate() {
+        double numberOfAccounts = 0;
+        for (Account account : this.accounts) {
+            if (account != null) {
+                numberOfAccounts++;
+            }
+        }
+        return numberOfAccounts / this.accounts.length;
+    }
+
+    /**
+     * Halves a array
+     */
     private void cutArray() {
         Account[] tempArray = new Account[this.accounts.length / 2];
         int k = 0;
@@ -61,9 +85,9 @@ public class Bank {
             if (account != null) {
                 tempArray[k] = account;
                 k++;
-        this.accounts = tempArray;
             }
         }
+        this.accounts = tempArray;
     }
 
     //public boolean containsAccount(int accountNumber) {}
