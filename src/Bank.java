@@ -96,16 +96,35 @@ public class Bank {
      * @return true if account exists, false if not
      */
     public boolean containsAccount(int accountNumber) {
-        for (int i = 0; i < this.accounts.length; i++) {
-            if (accountNumber == accounts[i].getAccountNumber()) {
+        for (Account account : this.accounts) {
+            if (accountNumber == account.getAccountNumber()) {
                 return true;
             }
         }
         return false;
     }
 
-    //public boolean internalBankTransfer(int fromAccountNumber ,int toAccountNumber ,int amount) {}
+    /**
+     * Transfer an amount from one account to another
+     *
+     * @param fromAccountNumber source account
+     * @param toAccountNumber   target account
+     * @param amount            amount
+     * @return true if the two account numbers exist
+     * and the balance of the source account wouldn't be negative after transfer
+     */
+    public boolean internalBankTransfer(int fromAccountNumber, int toAccountNumber, int amount) {
+        if (containsAccount(fromAccountNumber) && containsAccount(toAccountNumber)) {
+            return accounts[fromAccountNumber].transfer(accounts[toAccountNumber], amount);
+        }
+        return false;
+    }
 
+    /**
+     * Giving the length of the account array
+     *
+     * @return length of account array
+     */
     public int length() {
         return this.accounts.length;
     }
@@ -125,9 +144,13 @@ public class Bank {
         return numberOfAccounts;
     }
 
-public Account  getAccount(int index) {
+    /**
+     * @param index account index
+     * @return elements of the array
+     */
+    public Account getAccount(int index) {
         return this.accounts[index];
-}
+    }
 
 
 }
