@@ -1,7 +1,7 @@
 import edu.kit.informatik.*;
 
 public class Bank {
-    private int bankCode; //maybe static?????
+    private int bankCode;
     Account[] accounts = new Account[8];
     private int nextAccountNumber = 0;
 
