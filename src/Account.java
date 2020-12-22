@@ -61,11 +61,16 @@ public class Account {
     }
 
     /**
-     * Returns the account number
-     *
      * @return account number
      */
     public int getAccountNumber() {
         return accountNumber;
+    }
+
+    /**
+     * @return balance
+     */
+    public int getBalance() {
+        return this.balance;
     }
 }
