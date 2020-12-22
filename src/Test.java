@@ -16,13 +16,19 @@ public class Test {
         bank2.createAccount();
         bank2.createAccount();
         //Removing account 2 of bank1
-        bank1.removeAccount(2);
-
+        bank1.removeAccount(3);
+        //Testing how many accounts have been created
+        System.out.println(bank1.size());
+        //Tests the deposit to an account
         testBankBalance(bank1, 0);
+        //Tests a withdraw (amount less than balance)
         testWithdrawEnoughMoney(bank1, 0);
+        //Tests a withdraw (amount higher than balance)
         testWithdrawNotEnoughMoney(bank1, 0);
-
+        //Gives the accounts numbers of all accounts
         viewAllAccounts(bank1);
+
+
     }
 
     public static void viewAllAccounts(Bank bank) {
@@ -36,22 +42,24 @@ public class Test {
         }
     }
 
-    public static boolean testBankBalance(Bank bank, int i) {
-        bank.getAccount(i).deposit(10);
-        System.out.println(bank.getAccount(i).getBalance());
-        return true;
+    public static void testBankBalance(Bank bank, int accountNumber) {
+        bank.getAccount(bank.giveIndex(accountNumber)).deposit(10);
+        System.out.println(bank.getAccount(accountNumber).getBalance());
     }
 
-    private static boolean testWithdrawEnoughMoney(Bank bank, int i) {
-        bank.getAccount(i).withdraw(5);
-        System.out.println(bank.getAccount(i).getBalance());
-        return true;
+    private static void testTransfer(Bank bank, int fromAccount, int toAccount, int amount) {
+        bank.internalBankTransfer(fromAccount, toAccount, amount);
+        System.out.println();
     }
 
-    private static boolean testWithdrawNotEnoughMoney(Bank bank, int i) {
-        bank.getAccount(i).withdraw(11);
-        System.out.println(bank.getAccount(i).getBalance());
-        return true;
+    private static void testWithdrawEnoughMoney(Bank bank, int accountNumber) {
+        bank.getAccount(bank.giveIndex(accountNumber)).withdraw(5);
+        System.out.println(bank.getAccount(bank.giveIndex(accountNumber)).getBalance());
+    }
+
+    private static void testWithdrawNotEnoughMoney(Bank bank, int accountNumber) {
+        bank.getAccount(bank.giveIndex(accountNumber)).withdraw(11);
+        System.out.println(bank.getAccount(bank.giveIndex(accountNumber)).getBalance());
     }
 
 

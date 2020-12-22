@@ -152,5 +152,18 @@ public class Bank {
         return this.accounts[index];
     }
 
-
+    /**
+     * Gives the array index to the given account
+     * @param accountNumber account number
+     * @return index of array
+     */
+    public int giveIndex(int accountNumber) {
+        int index = 0;
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i].getAccountNumber()==accountNumber) {
+                index = i;
+            }
+        }
+        return index;
+    }
 }
