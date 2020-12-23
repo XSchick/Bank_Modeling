@@ -18,15 +18,18 @@ public class Test {
         //Removing account 2 of bank1
         bank1.removeAccount(3);
         //Testing how many accounts have been created
-        System.out.println(bank1.size());
+        //System.out.println(bank1.size());
         //Tests the deposit to an account
         testBankBalance(bank1, 0);
         //Tests a withdraw (amount less than balance)
-        testWithdrawEnoughMoney(bank1, 0);
+        //testWithdrawEnoughMoney(bank1, 0);
         //Tests a withdraw (amount higher than balance)
-        testWithdrawNotEnoughMoney(bank1, 0);
+        //testWithdrawNotEnoughMoney(bank1, 0);
         //Gives the accounts numbers of all accounts
-        viewAllAccounts(bank1);
+        //viewAllAccounts(bank1);
+
+        testTransfer(bank1, 0, 1, 7);
+
 
 
     }
@@ -44,12 +47,15 @@ public class Test {
 
     public static void testBankBalance(Bank bank, int accountNumber) {
         bank.getAccount(bank.giveIndex(accountNumber)).deposit(10);
-        System.out.println(bank.getAccount(accountNumber).getBalance());
+        System.out.println(bank.accounts[bank.giveIndex(accountNumber)].getBalance());
     }
 
     private static void testTransfer(Bank bank, int fromAccount, int toAccount, int amount) {
-        bank.internalBankTransfer(fromAccount, toAccount, amount);
-        System.out.println();
+        System.out.println(fromAccount);
+        System.out.println(toAccount);
+        System.out.println(bank.internalBankTransfer(fromAccount, toAccount, amount));
+        System.out.println(bank.accounts[bank.giveIndex(fromAccount)].getBalance());
+        System.out.println(bank.accounts[bank.giveIndex(toAccount)].getBalance());
     }
 
     private static void testWithdrawEnoughMoney(Bank bank, int accountNumber) {
@@ -61,6 +67,4 @@ public class Test {
         bank.getAccount(bank.giveIndex(accountNumber)).withdraw(11);
         System.out.println(bank.getAccount(bank.giveIndex(accountNumber)).getBalance());
     }
-
-
 }

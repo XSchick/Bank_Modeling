@@ -159,9 +159,10 @@ public class Bank {
      */
     public int giveIndex(int accountNumber) {
         int index = 0;
-        for (int i = 0; i < accounts.length; i++) {
-            if (accounts[i].getAccountNumber()==accountNumber) {
+        for (int i = 0; i < this.accounts.length; i++) {
+            if (this.accounts[i].getAccountNumber()==accountNumber) {
                 index = i;
+                break;
             }
         }
         return index;
