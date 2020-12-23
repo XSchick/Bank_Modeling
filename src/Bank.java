@@ -2,7 +2,7 @@ import edu.kit.informatik.*;
 
 public class Bank {
     private int bankCode;
-    Account[] accounts = new Account[8];
+    public Account[] accounts = new Account[8];
     private int nextAccountNumber = 0;
 
     /**
@@ -52,6 +52,8 @@ public class Bank {
         for (int i = 0; i < accounts.length; i++) {
             if (accountNumber == accounts[i].getAccountNumber()) {
                 accounts[i] = null;
+                /* If less than a quarter of the array is used and
+                the array is bigger than it's default size, cut the array */
                 if ((fillRate() < 0.25) && (this.accounts.length != 8)) {
                     cutArray();
                 }
