@@ -154,13 +154,14 @@ public class Bank {
 
     /**
      * Gives the array index to the given account
+     *
      * @param accountNumber account number
      * @return index of array
      */
     public int giveIndex(int accountNumber) {
         int index = 0;
         for (int i = 0; i < this.accounts.length; i++) {
-            if (this.accounts[i].getAccountNumber()==accountNumber) {
+            if (this.accounts[i].getAccountNumber() == accountNumber) {
                 index = i;
                 break;
             }
